@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>متجري</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <h1 id="storeName">متجري</h1>
+        <p id="storeTagline"></p>
+      </div>
+      <button class="cart-btn" id="openCart" aria-label="السلة">
+        🛒 <span>السلة</span>
+        <b class="badge" id="cartCount">0</b>
+      </button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="tools">
+      <input type="search" id="search" placeholder="ابحث عن منتج…" aria-label="بحث">
+      <div class="chips" id="categories"></div>
+    </div>
+    <div class="grid" id="products"></div>
+    <p class="empty" id="noResults" hidden>ما فيه منتجات تطابق بحثك.</p>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="year"></span> <span id="footerName"></span> — الطلب عبر الواتساب</div>
+  </footer>
+
+  <!-- السلة -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-head">
+      <h2>سلة المشتريات</h2>
+      <button class="icon-btn" id="closeCart" aria-label="إغلاق">✕</button>
+    </div>
+    <div class="drawer-body">
+      <ul class="cart-list" id="cartList"></ul>
+      <p class="empty" id="cartEmpty">السلة فاضية.</p>
+
+      <div id="checkout" hidden>
+        <div class="totals">
+          <div><span>المجموع</span><span id="subtotal"></span></div>
+          <div><span>التوصيل</span><span id="delivery"></span></div>
+          <div class="grand"><span>الإجمالي</span><span id="total"></span></div>
+          <p class="hint" id="freeHint"></p>
+        </div>
+
+        <form id="orderForm" class="form">
+          <label>الاسم<input name="name" required></label>
+          <label>رقم الجوال<input name="phone" type="tel" required></label>
+          <label>المدينة والحي<input name="address" required></label>
+          <label>ملاحظات (اختياري)<textarea name="notes" rows="2"></textarea></label>
+          <button type="submit" class="primary">إرسال الطلب عبر الواتساب</button>
+        </form>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="products.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
