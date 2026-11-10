@@ -41,7 +41,7 @@
   // ---------- المتجر ----------
   function renderHeader() {
     document.title = STORE.name;
-    $("storeName").textContent = STORE.name;
+    $("storeName").innerHTML = `<span class="logo" aria-label="${escapeHtml(STORE.name)}"><span class="o">o</span><span class="p">p</span></span>`;
     $("storeTagline").textContent = STORE.tagline;
     $("footerName").textContent = STORE.name;
     $("year").textContent = new Date().getFullYear();
