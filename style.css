@@ -141,3 +141,12 @@ input, textarea { font: inherit; }
   transition: transform .25s ease; z-index: 40; font-size: .9rem;
 }
 .toast.show { transform: translate(-50%, 0); }
+
+/* طرق الدفع */
+.pay { border: 0; padding: 0; margin: 0; display: grid; gap: 8px; min-width: 0; }
+.pay legend { font-size: .9rem; color: var(--muted); padding: 0; margin-bottom: 4px; }
+.pay-options { display: grid; gap: 8px; }
+.form .pay-opt { display: flex; font-size: 1rem; align-items: center; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text); cursor: pointer; }
+.form .pay-opt input { accent-color: var(--accent); margin: 0; padding: 0; width: 18px; height: 18px; flex-shrink: 0; }
+.form .pay-opt:has(input:checked) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent) inset; }
+.pay-details { white-space: pre-line; background: var(--bg); border: 1px dashed var(--accent); border-radius: 10px; padding: 12px; font-size: .9rem; user-select: all; }

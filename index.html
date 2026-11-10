@@ -59,6 +59,11 @@
           <label>رقم الجوال<input name="phone" type="tel" required></label>
           <label>المدينة والحي<input name="address" required></label>
           <label>ملاحظات (اختياري)<textarea name="notes" rows="2"></textarea></label>
+          <fieldset class="pay">
+            <legend>طريقة الدفع</legend>
+            <div class="pay-options" id="payOptions"></div>
+            <div class="pay-details" id="payDetails" hidden></div>
+          </fieldset>
           <button type="submit" class="primary">إرسال الطلب عبر الواتساب</button>
         </form>
       </div>

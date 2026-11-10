@@ -154,6 +154,8 @@
       `الجوال: ${data.phone}`,
       `العنوان: ${data.address}`,
     ];
+    const pay = selectedPayment();
+    if (pay) lines.push(`طريقة الدفع: ${pay.label}`);
     if (data.notes) lines.push(`ملاحظات: ${data.notes}`);
 
     const url = `https://wa.me/${STORE.whatsapp}?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -197,8 +199,28 @@
     sendOrder(e.target);
   });
 
+  // ---------- طرق الدفع ----------
+  function renderPayments() {
+    const list = STORE.payments || [];
+    $("payOptions").innerHTML = list.map((p, i) => `
+      <label class="pay-opt"><input type="radio" name="pay" value="${escapeHtml(p.id)}"${i === 0 ? " checked" : ""} required>
+      <span>${escapeHtml(p.icon || "")} ${escapeHtml(p.label)}</span></label>`).join("");
+    showPayDetails();
+  }
+  function selectedPayment() {
+    const v = (document.querySelector('input[name="pay"]:checked') || {}).value;
+    return (STORE.payments || []).find((p) => p.id === v);
+  }
+  function showPayDetails() {
+    const p = selectedPayment();
+    $("payDetails").hidden = !(p && p.details);
+    $("payDetails").textContent = p && p.details ? p.details + "\n\nبعد التحويل أرسل صورة الإيصال في الواتساب." : "";
+  }
+  $("payOptions").addEventListener("change", showPayDetails);
+
   renderHeader();
   renderCategories();
   renderProducts();
   renderCart();
+  renderPayments();
 })();
